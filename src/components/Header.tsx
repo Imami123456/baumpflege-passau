@@ -49,6 +49,10 @@ export const Header: React.FC<HeaderProps> = () => {
           {/* Logo & Brand */}
           <a
             href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-forest-400 rounded-lg p-1"
           >
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-forest-600 to-forest-800 flex items-center justify-center text-forest-100 shadow-md border border-forest-500/30 group-hover:scale-105 transition-transform">
