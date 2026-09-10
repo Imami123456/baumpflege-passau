@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../context/useLanguage';
+import { calculateEstimatedPrice } from '../utils/pricing';
 import confetti from 'canvas-confetti';
 import {
   Calculator,
@@ -92,26 +93,13 @@ export const CostEstimator: React.FC = () => {
 
   // Price Calculation Logic
   const priceRange = useMemo(() => {
-    const serviceItems = t.calculator.serviceOptions.filter((opt) =>
-      formData.selectedServices.includes(opt.id)
+    return calculateEstimatedPrice(
+      formData.selectedServices,
+      formData.treeHeight,
+      formData.accessibility,
+      t.calculator.serviceOptions,
+      t.calculator.heightOptions
     );
-
-    const baseSum = serviceItems.reduce((acc, curr) => acc + curr.basePrice, 0);
-
-    const heightOption =
-      t.calculator.heightOptions.find((h) => h.id === formData.treeHeight) ||
-      t.calculator.heightOptions[1];
-    const heightFactor = heightOption.factor;
-
-    const accessFactor = formData.accessibility === 'hard' ? 1.35 : 1.0;
-
-    const rawTotal = baseSum * heightFactor * accessFactor;
-
-    // Build min and max rounded range
-    const min = Math.round((rawTotal * 0.88) / 10) * 10;
-    const max = Math.round((rawTotal * 1.22) / 10) * 10;
-
-    return { min, max };
   }, [formData.selectedServices, formData.treeHeight, formData.accessibility, t.calculator]);
 
   const validateStep4 = () => {

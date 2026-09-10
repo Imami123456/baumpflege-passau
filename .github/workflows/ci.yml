@@ -27,5 +27,8 @@ jobs:
       - name: Run Linter (Oxlint)
         run: npm run lint
 
+      - name: Run Unit Tests (Vitest)
+        run: npm run test
+
       - name: Verify TypeScript & Build
         run: npm run build
