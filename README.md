@@ -4,6 +4,8 @@
 [![React](https://img.shields.io/badge/React-19.x-61dafb?logo=react&logoColor=black)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38bdf8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-6.x-646cff?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tests: Vitest](https://img.shields.io/badge/Tests-Vitest-success?logo=vitest&logoColor=white)](https://vitest.dev/)
+[![CI: GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)](.github/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > High-converting, interactive, responsive bilingual (German / English, German default) commercial website for a tree care, arborism, and property maintenance enterprise based in Passau, Bavaria.
@@ -21,10 +23,14 @@
   - **Step 2:** Tree height scale & terrain accessibility toggle (*Easy access* vs. *Steep slope / narrow river valley passage*).
   - **Step 3:** Photo upload preview with dropzone and instant thumbnail inspection.
   - **Step 4:** Dynamic preliminary estimate range, `canvas-confetti` celebration, and 1-click formatted WhatsApp / Mailto query dispatch.
+  - **Direct Service Pre-selection:** Clicking "Preis anfragen" on any service card automatically preselects that service in the calculator.
 
 - **🪓 Interactive Before & After Comparison Slider:**
   - Touch- and drag-enabled slider component showcasing work quality (hazardous overgrowth vs. manicured lawn with neatly stacked firewood).
   - Keyboard accessible with full ARIA range slider controls.
+
+- **❓ Interactive Passau Tree Care FAQ Accordion:**
+  - Accordion addressing common municipal requirements (*Baumschutzverordnung Passau*, *Fällgenehmigungen*, *Vogelschutzfristen § 39 BNatSchG*, *SKT vs. Hubsteiger*).
 
 - **🚨 24/7 Storm Damage Emergency Banner:**
   - Flashing amber pulse beacon for emergency windbreak & fallen tree response across Passau's three rivers (Danube, Inn, Ilz).
@@ -52,6 +58,7 @@
 | **Framework** | [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
 | **Build Tool** | [Vite](https://vitejs.dev/) |
 | **Styling** | [Tailwind CSS](https://tailwindcss.com/) (Custom Bavarian forest/timber palette) |
+| **Testing** | [Vitest](https://vitest.dev/) (Unit & i18n data parity testing) |
 | **Icons** | [Lucide React](https://lucide.dev/) |
 | **Visual Effects** | [Canvas Confetti](https://www.npmjs.com/package/canvas-confetti) |
 | **Code Quality** | Oxlint + Strict TypeScript (`tsc -b`) |
@@ -67,10 +74,10 @@
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/<your-repo-name>.git
+git clone git@github.com:Imami123456/baumpflege-passau.git
 
 # Navigate to project root
-cd <your-repo-name>
+cd baumpflege-passau
 
 # Install dependencies
 npm install
@@ -81,6 +88,15 @@ npm install
 npm run dev
 ```
 Open `http://localhost:5173/` in your browser.
+
+### Automated Testing
+```bash
+# Run unit tests
+npm run test
+
+# Run tests in watch mode
+npm run test:watch
+```
 
 ### Production Build
 ```bash
@@ -98,7 +114,14 @@ npm run lint
 ## 📁 Project Structure
 
 ```
-├── index.html                  # SEO meta tags, German localization & fonts
+├── .editorconfig               # Cross-editor formatting rules
+├── .github/
+│   ├── workflows/ci.yml        # Automated CI test, lint & build pipeline
+│   ├── ISSUE_TEMPLATE/         # Structured bug report & feature request forms
+│   └── PULL_REQUEST_TEMPLATE.md# Pull request guidelines and verification checklist
+├── tests/
+│   ├── pricing.test.ts         # Unit tests for cost calculation engine
+│   └── translations.test.ts    # Bilingual dictionary parity & postal code tests
 ├── src/
 │   ├── components/
 │   │   ├── Header.tsx          # Sticky frosted-glass navbar & lang switcher
@@ -110,6 +133,7 @@ npm run lint
 │   │   ├── ServiceAreaPassau.tsx # Passau district badges & radius map
 │   │   ├── AboutSection.tsx    # Equipment, safety pledge & key stats
 │   │   ├── Testimonials.tsx    # 5-star customer reviews from Passau
+│   │   ├── FAQSection.tsx      # Expandable Passau tree care FAQ accordion
 │   │   ├── ContactSection.tsx  # Direct phone, WhatsApp, email, depot
 │   │   ├── LegalModals.tsx     # Impressum (§ 5 DDG) & Datenschutz (DSGVO)
 │   │   ├── CookieBanner.tsx    # Privacy consent banner
@@ -121,11 +145,14 @@ npm run lint
 │   │   └── languageContextDefinition.ts
 │   ├── i18n/
 │   │   └── translations.ts     # Complete DE / EN localized dictionary
+│   ├── utils/
+│   │   └── pricing.ts          # Pure tree care pricing formula engine
 │   ├── App.tsx                 # Root layout assembler
 │   ├── main.tsx                # React DOM entry point
 │   └── index.css               # Tailwind directives & smooth scrolling
 ├── tailwind.config.js          # Custom forest/amber outdoor theme
-├── tsconfig.json
+├── SECURITY.md                 # Security & responsible disclosure policy
+├── LICENSE                     # MIT License
 └── package.json
 ```
 
