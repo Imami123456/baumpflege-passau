@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useLanguage } from '../context/useLanguage';
 import { calculateEstimatedPrice } from '../utils/pricing';
 import confetti from 'canvas-confetti';
@@ -49,6 +49,27 @@ export const CostEstimator: React.FC = () => {
     location: '',
     notes: '',
   });
+
+  useEffect(() => {
+    const handleServiceSelect = (event: Event) => {
+      const customEvent = event as CustomEvent<string>;
+      const serviceId = customEvent.detail;
+      if (!serviceId) return;
+      const validService = t.calculator.serviceOptions.some((s) => s.id === serviceId)
+        ? serviceId
+        : 'faellung';
+      setFormData((prev) => ({
+        ...prev,
+        selectedServices: [validService],
+      }));
+      setCurrentStep(1);
+    };
+
+    window.addEventListener('baumpflege-select-service', handleServiceSelect);
+    return () => {
+      window.removeEventListener('baumpflege-select-service', handleServiceSelect);
+    };
+  }, [t.calculator.serviceOptions]);
 
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
 

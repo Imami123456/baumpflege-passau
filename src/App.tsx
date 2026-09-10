@@ -9,6 +9,7 @@ import { BeforeAfterSlider } from './components/BeforeAfterSlider';
 import { ServiceAreaPassau } from './components/ServiceAreaPassau';
 import { AboutSection } from './components/AboutSection';
 import { Testimonials } from './components/Testimonials';
+import { FAQSection } from './components/FAQSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { LegalModals } from './components/LegalModals';
@@ -17,7 +18,6 @@ import { CookieBanner } from './components/CookieBanner';
 
 export const MainAppContent: React.FC = () => {
   const [activeLegalModal, setActiveLegalModal] = useState<'impressum' | 'datenschutz' | null>(null);
-
   const handleOpenLegal = (type: 'impressum' | 'datenschutz') => {
     setActiveLegalModal(type);
   };
@@ -56,6 +56,9 @@ export const MainAppContent: React.FC = () => {
 
         {/* Verified Passau Customer Reviews */}
         <Testimonials />
+
+        {/* Interactive FAQ Accordion Section */}
+        <FAQSection />
 
         {/* Direct Contact & Operating Hours */}
         <ContactSection />

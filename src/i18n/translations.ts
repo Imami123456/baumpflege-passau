@@ -7,6 +7,7 @@ export interface TranslationDictionary {
     beforeAfter: string;
     area: string;
     reviews: string;
+    faq: string;
     contact: string;
     emergencyCall: string;
     getQuote: string;
@@ -173,6 +174,15 @@ export interface TranslationDictionary {
     rights: string;
     cookieSettings: string;
   };
+  faq: {
+    badge: string;
+    title: string;
+    subtitle: string;
+    items: {
+      question: string;
+      answer: string;
+    }[];
+  };
   legal: {
     impressumTitle: string;
     datenschutzTitle: string;
@@ -188,6 +198,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       beforeAfter: 'Vorher / Nachher',
       area: 'Einsatzgebiet',
       reviews: 'Kundenstimmen',
+      faq: 'FAQ',
       contact: 'Kontakt',
       emergencyCall: '0170 892 4110',
       getQuote: 'Angebot berechnen',
@@ -419,6 +430,33 @@ export const translations: Record<Language, TranslationDictionary> = {
       businessHoursTitle: 'Geschäftszeiten:',
       businessHoursText: 'Montag – Samstag: 07:00 – 19:00 Uhr | Notdienst: 24 Stunden / 7 Tage',
     },
+    faq: {
+      badge: 'FRAGEN & ANTWORTEN',
+      title: 'Häufig gestellte Fragen (FAQ)',
+      subtitle: 'Alles Wichtige rund um Fällgenehmigungen in Passau, Seilklettertechnik und unsere Arbeitsweise.',
+      items: [
+        {
+          question: 'Brauche ich in Passau eine Genehmigung für eine Baumfällung?',
+          answer: 'Das hängt vom Standort und Baumschutz ab. Im Stadtgebiet Passau sowie in Landschaftsschutzgebieten an Donau, Inn und Ilz gelten bestimmte Schutzsatzungen und Vogelschutzfristen (1. März bis 30. September gemäß § 39 BNatSchG). Form- und Pflegeschnitte sowie Fällungen zur unmittelbaren Gefahrenabwehr sind ganzjährig zulässig. Wir beraten Sie hierzu umfassend und unterstützen bei behördlichen Anträgen.'
+        },
+        {
+          question: 'Warum ist Seilklettertechnik (SKT) oft besser als ein Hubsteiger?',
+          answer: 'Gerade in Passaus historischen Gassen, Steillagen oder eingewachsenen Gärten passt kein schweres Fahrzeug hinein. Mit Seilklettertechnik (SKT-A/B) klettern unsere geprüften Baumpfleger seilunterstützt in jeden Kronenbereich, ohne Ihren Rasen, Zufahrten oder Beete zu beschädigen.'
+        },
+        {
+          question: 'Was passiert mit dem anfallenden Schnittgut und Holz?',
+          answer: 'Sie entscheiden: Wir können Äste bis 20 cm direkt vor Ort mit unserem Großhacker zu wertvollem Mulch verarbeiten, Stammholz auf ofenfertige Kaminlänge sägen oder das gesamte Material vollständig und besenrein abtransportieren.'
+        },
+        {
+          question: 'Wie schnell sind Sie bei Sturmschäden vor Ort?',
+          answer: 'Unser 24/7 Notdienst ist im Stadtgebiet Passau und 35 km Umkreis bei akuter Gefahr (z.B. umgestürzter Baum auf Dach, Garage oder Zufahrt) in der Regel innerhalb von 45 bis 60 Minuten einsatzbereit.'
+        },
+        {
+          question: 'Sind Sie gegen eventuelle Schäden versichert?',
+          answer: 'Selbstverständlich. Wir verfügen über eine betriebliche Haftpflichtversicherung mit einer pauschalen Deckungssumme von 5.000.000 € für Personen- und Sachschäden bei der Versicherungskammer Bayern.'
+        }
+      ]
+    },
     footer: {
       brandBio: 'Ihr erfahrener Meister- und Fachbetrieb für Problembaumfällung, Seilklettertechnik, Baumpflege und Grünanlagenpflege in Passau und ganz Niederbayern.',
       quickLinks: 'Navigation',
@@ -442,6 +480,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       beforeAfter: 'Before / After',
       area: 'Service Area',
       reviews: 'Reviews',
+      faq: 'FAQ',
       contact: 'Contact',
       emergencyCall: '+49 170 892 4110',
       getQuote: 'Estimate Cost',
@@ -672,6 +711,33 @@ export const translations: Record<Language, TranslationDictionary> = {
       addressCardSub: 'Innstraße 42, 94032 Passau (Office & Depot)',
       businessHoursTitle: 'Working Hours:',
       businessHoursText: 'Monday – Saturday: 07:00 – 19:00 | Emergency: 24/7 around the clock',
+    },
+    faq: {
+      badge: 'FREQUENTLY ASKED QUESTIONS',
+      title: 'Helpful Answers to Common Questions',
+      subtitle: 'Everything you need to know about tree protection laws in Passau, rope access climbing, and our workflow.',
+      items: [
+        {
+          question: 'Do I need a permit to fell a tree in Passau?',
+          answer: 'This depends on the tree size, species, and location. In Passau urban areas and designated landscape reserves along the Danube, Inn, and Ilz rivers, tree preservation statutes apply. Section 39 of the Federal Nature Conservation Act protects bird nesting between March 1 and September 30, but pruning, health cuts, and immediate storm hazard removals are permitted year-round. We gladly assist you with municipal paperwork.'
+        },
+        {
+          question: 'Why is Rope Access Technique (SKT) preferred over heavy cranes?',
+          answer: 'Passau’s historic alleys, river slopes, and enclosed residential courtyards often cannot accommodate heavy crane trucks. Certified rope climbers (SKT-A/B) maneuver safely into any crown without damaging your lawn, pavement, or garden structures.'
+        },
+        {
+          question: 'What happens to the felled timber and green waste?',
+          answer: 'You choose: We can chip all limbs on-site into valuable garden mulch, cut firewood logs to your preferred stove length, or remove everything completely with a spotless broom-clean guarantee.'
+        },
+        {
+          question: 'How quickly can your emergency storm crew arrive?',
+          answer: 'Our 24/7 emergency hotline responds across Passau and a 35 km radius typically within 45 to 60 minutes when fallen limbs threaten buildings or block essential driveways.'
+        },
+        {
+          question: 'Are you insured in case of accidental property damage?',
+          answer: 'Yes, fully. We carry a comprehensive commercial liability insurance policy with €5,000,000 coverage per incident through Versicherungskammer Bayern.'
+        }
+      ]
     },
     footer: {
       brandBio: 'Your certified local specialist for hazardous tree dismantling, rope climbing arborism, tree care, and landscape maintenance across Passau and Lower Bavaria.',

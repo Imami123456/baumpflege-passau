@@ -2,10 +2,18 @@ import React from 'react';
 import { useLanguage } from '../context/useLanguage';
 import { Check, ArrowUpRight, TreePine, Wrench } from 'lucide-react';
 
-export const ServicesGrid: React.FC = () => {
+interface ServicesGridProps {
+  onSelectService?: (serviceId: string) => void;
+}
+
+export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService }) => {
   const { t } = useLanguage();
 
-  const handleSelectService = () => {
+  const handleSelectService = (serviceId: string) => {
+    window.dispatchEvent(new CustomEvent('baumpflege-select-service', { detail: serviceId }));
+    if (onSelectService) {
+      onSelectService(serviceId);
+    }
     const el = document.querySelector('#rechner');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
@@ -94,7 +102,7 @@ export const ServicesGrid: React.FC = () => {
 
                   {/* Card Bottom Action */}
                   <button
-                    onClick={handleSelectService}
+                    onClick={() => handleSelectService(service.id)}
                     className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-forest-50 hover:bg-forest-600 text-forest-800 hover:text-white font-semibold text-xs transition-all duration-200 border border-forest-200 hover:border-forest-600 group/btn"
                   >
                     <span>{t.services.ctaCard}</span>

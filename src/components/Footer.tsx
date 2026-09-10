@@ -93,6 +93,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                   {t.nav.reviews}
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => handleNavClick('#faq')}
+                  className="hover:text-forest-300 transition-colors"
+                >
+                  {t.nav.faq}
+                </button>
+              </li>
             </ul>
           </div>
 

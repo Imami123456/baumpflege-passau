@@ -25,6 +25,7 @@ export const Header: React.FC<HeaderProps> = () => {
     { href: '#vorher-nachher', label: t.nav.beforeAfter },
     { href: '#einsatzgebiet', label: t.nav.area },
     { href: '#bewertungen', label: t.nav.reviews },
+    { href: '#faq', label: t.nav.faq },
     { href: '#kontakt', label: t.nav.contact },
   ];
 
