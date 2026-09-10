@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useLanguage } from '../context/useLanguage';
 import { calculateEstimatedPrice } from '../utils/pricing';
+import { validateName, validatePhone, validateLocation } from '../utils/validation';
 import confetti from 'canvas-confetti';
 import {
   Calculator,
@@ -125,15 +126,21 @@ export const CostEstimator: React.FC = () => {
 
   const validateStep4 = () => {
     const errors: { [key: string]: string } = {};
-    if (!formData.name.trim()) {
-      errors.name = language === 'de' ? 'Bitte Namen angeben' : 'Please provide your name';
+    const nameRes = validateName(formData.name, language);
+    if (!nameRes.isValid && nameRes.message) {
+      errors.name = nameRes.message;
     }
-    if (!formData.phone.trim()) {
-      errors.phone = language === 'de' ? 'Bitte Telefonnummer angeben' : 'Please provide a phone number';
+
+    const phoneRes = validatePhone(formData.phone, language);
+    if (!phoneRes.isValid && phoneRes.message) {
+      errors.phone = phoneRes.message;
     }
-    if (!formData.location.trim()) {
-      errors.location = language === 'de' ? 'Bitte PLZ / Ort angeben' : 'Please provide postal code or town';
+
+    const locRes = validateLocation(formData.location, language);
+    if (!locRes.isValid && locRes.message) {
+      errors.location = locRes.message;
     }
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -217,6 +224,7 @@ export const CostEstimator: React.FC = () => {
   const resetForm = () => {
     setIsSubmitted(false);
     setCurrentStep(1);
+    setFormErrors({});
     setFormData({
       selectedServices: ['faellung'],
       treeHeight: 'h2',
