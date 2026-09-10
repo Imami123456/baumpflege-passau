@@ -3,7 +3,7 @@ import { useLanguage } from '../context/useLanguage';
 import { ChevronsLeftRight, Sparkles, MapPin, CheckCircle } from 'lucide-react';
 
 export const BeforeAfterSlider: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [sliderPosition, setSliderPosition] = useState<number>(50); // percentage (0 to 100)
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [containerWidth, setContainerWidth] = useState<number>(1000);
@@ -127,7 +127,11 @@ export const BeforeAfterSlider: React.FC = () => {
               value={sliderPosition}
               onChange={(e) => setSliderPosition(Number(e.target.value))}
               className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-40"
-              aria-label="Vorher Nachher Schieberegler"
+              aria-label={language === 'de' ? 'Vorher-Nachher Bildervergleich Schieberegler' : 'Before and after image comparison slider'}
+              aria-valuenow={sliderPosition}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuetext={`${sliderPosition}%`}
             />
           </div>
 

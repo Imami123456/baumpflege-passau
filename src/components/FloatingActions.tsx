@@ -31,7 +31,7 @@ export const FloatingActions: React.FC = () => {
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          aria-label="Nach oben scrollen"
+          aria-label={language === 'de' ? 'Nach oben scrollen' : 'Scroll back to top'}
           className="w-10 h-10 rounded-full bg-timber-800/80 hover:bg-timber-800 text-white shadow-md flex items-center justify-center backdrop-blur-sm transition-all hover:scale-110 active:scale-95 border border-timber-700"
         >
           <ArrowUp className="w-4 h-4" />
@@ -41,7 +41,7 @@ export const FloatingActions: React.FC = () => {
       {/* Instant Phone Call FAB (Mobile focused) */}
       <a
         href="tel:+491708924110"
-        aria-label="Direkt anrufen"
+        aria-label={language === 'de' ? 'Notfall-Hotline anrufen' : 'Call emergency hotline'}
         className="flex sm:hidden w-13 h-13 p-3.5 rounded-full bg-amber-600 hover:bg-amber-500 text-white shadow-xl items-center justify-center transition-all hover:scale-110 active:scale-95 border-2 border-white"
       >
         <Phone className="w-6 h-6 animate-pulse" />
@@ -52,7 +52,7 @@ export const FloatingActions: React.FC = () => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="WhatsApp Nachricht senden"
+        aria-label={language === 'de' ? 'WhatsApp Nachricht senden' : 'Send WhatsApp message'}
         className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-green-600 hover:bg-green-500 text-white shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 border-2 border-white"
       >
         <MessageCircle className="w-6 h-6 fill-current" />

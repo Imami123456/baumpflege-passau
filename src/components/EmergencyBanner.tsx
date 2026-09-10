@@ -6,7 +6,11 @@ export const EmergencyBanner: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="bg-gradient-to-r from-amber-700 via-amber-600 to-amber-800 text-white shadow-md relative overflow-hidden">
+    <div
+      role="region"
+      aria-label={t.emergency.badge}
+      className="bg-gradient-to-r from-amber-700 via-amber-600 to-amber-800 text-white shadow-md relative overflow-hidden"
+    >
       {/* Subtle diagonal background pattern */}
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
 
