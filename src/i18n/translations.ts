@@ -106,6 +106,7 @@ export interface TranslationDictionary {
     btnPrev: string;
     btnSubmitWhatsApp: string;
     btnSubmitEmail: string;
+    btnPrintEstimate: string;
     successMessage: string;
     resetCalculator: string;
     disclaimer: string;
@@ -346,6 +347,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       btnPrev: 'Zurück',
       btnSubmitWhatsApp: 'Per WhatsApp anfragen (Empfohlen)',
       btnSubmitEmail: 'Per E-Mail Angebot anfordern',
+      btnPrintEstimate: 'Angebot drucken / PDF speichern',
       successMessage: 'Vielen Dank! Ihre Anfrage wurde zusammengestellt.',
       resetCalculator: 'Neue Berechnung starten',
       disclaimer: 'Hinweis: Diese Richtpreisspanne dient der ersten Orientierung. Das finale Festpreis-Angebot erhalten Sie nach Fotoprüfung oder kurzer kostenloser Vor-Ort-Besichtigung.',
@@ -628,6 +630,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       btnPrev: 'Back',
       btnSubmitWhatsApp: 'Send via WhatsApp (Fastest)',
       btnSubmitEmail: 'Request Email Quote',
+      btnPrintEstimate: 'Print Estimate / Save as PDF',
       successMessage: 'Thank you! Your estimate request has been compiled.',
       resetCalculator: 'Start New Calculation',
       disclaimer: 'Note: This estimate range serves as preliminary orientation. The final binding fixed price is provided following photo inspection or a brief free on-site survey.',

@@ -40,3 +40,39 @@
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   }
 }
+
+/* Dedicated Print Media Styles for Cost Estimates & Insurance Documents */
+@media print {
+  header,
+  footer,
+  #leistungen,
+  #vorher-nachher,
+  #einsatzgebiet,
+  #bewertungen,
+  #faq,
+  #kontakt,
+  .floating-actions,
+  .cookie-banner,
+  .emergency-banner,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 12pt;
+  }
+
+  #rechner {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 0 !important;
+  }
+
+  #rechner * {
+    color: #0f172a !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+}

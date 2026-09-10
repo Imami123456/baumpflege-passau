@@ -19,7 +19,8 @@ import {
   Scissors,
   Shovel,
   Truck,
-  RotateCcw
+  RotateCcw,
+  Printer
 } from 'lucide-react';
 
 interface FormData {
@@ -593,6 +594,13 @@ export const CostEstimator: React.FC = () => {
           {/* STEP 4: Estimate Range & Submission */}
           {currentStep === 4 && (
             <div className="space-y-6">
+              {/* Document Letterhead for Print Mode */}
+              <div className="hidden print:block mb-6 pb-4 border-b border-gray-300 text-left">
+                <div className="text-xl font-bold text-gray-900">Bayerwald Baumpflege & Gartenservice Passau</div>
+                <div className="text-xs text-gray-600">Innstraße 42, 94032 Passau | Tel: 0170 892 4110 | info@baumpflege-passau.de</div>
+                <div className="text-xs text-gray-500 mt-1">Unverbindliche Kostenschätzung – Stand: {new Date().toLocaleDateString(language === 'de' ? 'de-DE' : 'en-US')}</div>
+              </div>
+
               {/* Dynamic Estimated Price Box */}
               <div className="bg-gradient-to-br from-forest-800 via-forest-900 to-timber-900 border-2 border-forest-500/60 rounded-2xl p-5 sm:p-6 text-center shadow-lg">
                 <div className="inline-flex items-center gap-1.5 text-xs text-forest-300 font-semibold uppercase tracking-wider mb-1">
@@ -698,7 +706,7 @@ export const CostEstimator: React.FC = () => {
                   </p>
 
                   {/* Submission CTAs */}
-                  <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                  <div className="pt-2 flex flex-col sm:flex-row gap-3 no-print">
                     <button
                       type="button"
                       onClick={handleWhatsAppSubmit}
@@ -715,6 +723,16 @@ export const CostEstimator: React.FC = () => {
                     >
                       <Mail className="w-4 h-4 text-forest-400" />
                       <span>{t.calculator.btnSubmitEmail}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => window.print()}
+                      className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-timber-800/90 hover:bg-timber-700 text-timber-200 hover:text-white font-semibold text-xs border border-timber-600 transition-all hover:scale-[1.02]"
+                      title={t.calculator.btnPrintEstimate}
+                    >
+                      <Printer className="w-4 h-4 text-forest-300" />
+                      <span className="sm:hidden xl:inline">{t.calculator.btnPrintEstimate}</span>
                     </button>
                   </div>
 
