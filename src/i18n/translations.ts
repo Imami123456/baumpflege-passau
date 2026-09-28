@@ -110,6 +110,8 @@ export interface TranslationDictionary {
     successMessage: string;
     resetCalculator: string;
     disclaimer: string;
+    footerPrivacyBadge: string;
+    footerInspectionBadge: string;
   };
   coverage: {
     badge: string;
@@ -351,6 +353,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       successMessage: 'Vielen Dank! Ihre Anfrage wurde zusammengestellt.',
       resetCalculator: 'Neue Berechnung starten',
       disclaimer: 'Hinweis: Diese Richtpreisspanne dient der ersten Orientierung. Das finale Festpreis-Angebot erhalten Sie nach Fotoprüfung oder kurzer kostenloser Vor-Ort-Besichtigung.',
+      footerPrivacyBadge: '100% unverbindlich & DSGVO-konform',
+      footerInspectionBadge: 'Kostenlose Vor-Ort-Besichtigung in Passau',
     },
     coverage: {
       badge: 'REGIONAL VERANKERT',
@@ -634,6 +638,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       successMessage: 'Thank you! Your estimate request has been compiled.',
       resetCalculator: 'Start New Calculation',
       disclaimer: 'Note: This estimate range serves as preliminary orientation. The final binding fixed price is provided following photo inspection or a brief free on-site survey.',
+      footerPrivacyBadge: '100% non-binding & GDPR-compliant',
+      footerInspectionBadge: 'Free on-site inspection in Passau',
     },
     coverage: {
       badge: 'LOCALLY BASED',

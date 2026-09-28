@@ -781,11 +781,11 @@ export const CostEstimator: React.FC = () => {
         <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-timber-400">
           <div className="flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-forest-400" />
-            <span>100% unverbindlich & DSGVO-konform</span>
+            <span>{t.calculator.footerPrivacyBadge}</span>
           </div>
           <div className="flex items-center gap-1.5">
             <CheckCircle2 className="w-4 h-4 text-forest-400" />
-            <span>Kostenlose Vor-Ort-Besichtigung in Passau</span>
+            <span>{t.calculator.footerInspectionBadge}</span>
           </div>
         </div>
 
